@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { mapTo, map, filter } from "rxjs/operators";
+import { mapTo, map, filter, tap } from "rxjs/operators";
 
 @Component({
   selector: 'app-basicos',
@@ -48,8 +48,24 @@ export class BasicosComponent implements OnInit, AfterViewInit {
         )
       );
 
+      // tap: Realiza acciones laterales con la data, sin afectar el valor que se devuelve
+      const clickTap = fromEvent( this.grid.nativeElement, 'click' )
+      .pipe( 
+        tap( val => console.log( 'Before:', val) ),
+        map(
+          (val:any )  => [ 
+            Math.floor( val.offsetX / 50 ), 
+            Math.floor( val.offsetY / 50 )
+          ]
+        ),
+        filter(
+          val => ( (val[0] + val[1]) % 2 != 0 ) //Devulve las posisiones Inpares
+        ),
+        tap( val => console.log( 'After:', val) )
+      );
 
-    const subs = clickFilter.subscribe( data => {
+          
+    const subs = clickTap.subscribe( data => {
       this.position = data; 
       console.log(data)
     });

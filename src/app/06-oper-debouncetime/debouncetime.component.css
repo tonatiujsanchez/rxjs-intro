@@ -1,0 +1,8 @@
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.col{
+    max-width: 50%;
+    min-width: 200px;
+}

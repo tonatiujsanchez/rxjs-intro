@@ -7,6 +7,7 @@ import { HelloworldComponent } from './02-helloworld/helloworld.component';
 import { FromComponent } from './03-from/from.component';
 import { FromeventComponent } from './04-fromevent/fromevent.component';
 import { BasicosComponent } from './05-operadores-basicos/basicos.component';
+import { DebouncetimeComponent } from './06-oper-debouncetime/debouncetime.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BasicosComponent } from './05-operadores-basicos/basicos.component';
     HelloworldComponent,
     FromComponent,
     FromeventComponent,
-    BasicosComponent
+    BasicosComponent,
+    DebouncetimeComponent
   ],
   imports: [
     BrowserModule
